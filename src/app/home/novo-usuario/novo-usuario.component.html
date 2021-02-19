@@ -1,5 +1,5 @@
 <h4 class="text-center">Registre-se e mostre seu pet para o mundo!</h4>
-<form action="" class="form mt-4" [formGroup]="novoUsuarioForm" (submit)="cadastrar()">
+<form class="form mt-4" [formGroup]="novoUsuarioForm" (submit)="cadastrar()">
     <div class="form-group">
         <input type="text" placeholder="e-mail" class="form-control" formControlName="email">
         <app-mensagem 
@@ -23,6 +23,10 @@
         <app-mensagem 
             *ngIf="novoUsuarioForm.get('userName')?.errors?.minusculo && novoUsuarioForm.get('userName')?.touched" 
             mensagem="usuário deve ser em letra minúscula">
+        </app-mensagem>
+        <app-mensagem 
+            *ngIf="novoUsuarioForm.get('userName')?.errors?.usuarioExistente" 
+            mensagem="usuário já existe">
         </app-mensagem>
     </div>
     <div class="form-group">
